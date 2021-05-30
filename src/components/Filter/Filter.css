@@ -21,4 +21,6 @@
     box-sizing: border-box;
     border-radius: 25px;
     padding: 5px 15px;
+    font-size: 18px;
+    line-height: 24px;
 }

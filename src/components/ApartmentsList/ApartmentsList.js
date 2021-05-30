@@ -2,10 +2,10 @@ import React from 'react';
 import './ApartmentsList.css'
 import Filter from '../Filter/Filter';
 import MoreBtn from '../MoreBtn/MoreBtn';
-
 import axios from 'axios';
 
 const URL_FETCH = 'https://603e38c548171b0017b2ecf7.mockapi.io/homes';
+const NUM_FILTERED_CHARS = 3;
 
 function getImage(type, width, height, title) {
     const size = width + 'x' + height;
@@ -48,28 +48,52 @@ function getApartItem(item) {
 class ApartmentsList extends React.Component {
     state = {
         apartments: [],
-        loaded: false
+        loaded: false,
+        inView: []
     };
 
     async componentDidMount() {
         try {
             const response = await axios.get(URL_FETCH);
             const apartments = response.data;
+            const inView = apartments.slice(0, 6);
             const loaded = true;
             this.setState({
                 apartments,
-                loaded
+                loaded,
+                inView
             })
         } catch (e) {
             alert(e);
         }
     }
 
+    onFiltered(evt) {
+        const input = evt.target;
+        const filterValue = input.value.toLowerCase();
+        const state = this.state;
+
+        if (filterValue.trim() === '') {
+            state.inView = state.apartments.slice(0, 6);
+            this.setState({
+                state
+            })
+            return;
+        }
+
+        if (filterValue.trim() < NUM_FILTERED_CHARS) return;
+
+        state.inView = state.apartments.filter(apartment => apartment.title.toLowerCase().includes(filterValue));
+        this.setState({
+            state
+        })
+    }
+
     render() {
         const apartList = (
             <>
                 <ul className="apart-list">
-                    {this.state.apartments.map((item, index) => {
+                    {this.state.inView.map((item, index) => {
                         return (
                             <li className="apart-list__item"
                                 key={index}>
@@ -88,7 +112,7 @@ class ApartmentsList extends React.Component {
 
         return (
             <main>
-                <Filter />
+                <Filter onChange={this.onFiltered.bind(this)} />
                 {rendered}
             </main>
         );

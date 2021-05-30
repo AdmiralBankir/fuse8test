@@ -5,7 +5,7 @@ const Filter = props => {
     return (
         <div className="filter">
             <label className="filter__label" htmlFor="filterInput">Filter</label>
-            <input className="filter__input" type="text" id="filterInput" />
+            <input onChange={props.onChange} className="filter__input" type="text" id="filterInput" />
         </div>
     );
 };
