@@ -3,9 +3,9 @@ import './Filter.css';
 
 const Filter = props => {
     return (
-        <div>
-            <input type="text" id="filterInput" />
-            <label htmlFor="filterInput">Filter</label>
+        <div className="filter">
+            <label className="filter__label" htmlFor="filterInput">Filter</label>
+            <input className="filter__input" type="text" id="filterInput" />
         </div>
     );
 };

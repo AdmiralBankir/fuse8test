@@ -1,6 +1,7 @@
 import React from 'react';
 import './ApartmentsList.css'
 import Filter from '../Filter/Filter';
+import MoreBtn from '../MoreBtn/MoreBtn';
 
 import axios from 'axios';
 
@@ -30,7 +31,7 @@ function getApartItem(item) {
                     <source type="image/webp" src={getImage('webp', 377, 227, item.title)} srcSet={getImage('webp', 377 * 2, 227 * 2, item.title) + ' 2x'} />
                     <img width="377" height="227" src={getImage('jpeg', 377, 227, item.title)} srcSet={getImage('jpeg', 377 * 2, 227 * 2, item.title) + ' 2x'} alt="Apart view" />
                 </picture>
-                <figcaption>
+                <figcaption className="apart-list__media-caption">
                     {item.type}
                 </figcaption>
             </figure>
@@ -38,6 +39,7 @@ function getApartItem(item) {
                 <p className="apart-list__desc-title">{item.title}</p>
                 <p className="apart-list__desc-address">{item.address}</p>
                 <p className="apart-list__desc-price">{'New Properties for Sale from £' + item.price}</p>
+                <p className="apart-list__desc-feature">Shared Ownership Available</p>
             </div>
         </a>
     );
@@ -65,16 +67,20 @@ class ApartmentsList extends React.Component {
 
     render() {
         const apartList = (
-            <ul className="apart-list">
-                {this.state.apartments.map((item, index) => {
-                    return (
-                        <li className="apart-list__item"
-                            key={index}>
-                            {getApartItem(item)}
-                        </li>
-                    )
-                })}
-            </ul>);
+            <>
+                <ul className="apart-list">
+                    {this.state.apartments.map((item, index) => {
+                        return (
+                            <li className="apart-list__item"
+                                key={index}>
+                                {getApartItem(item)}
+                            </li>
+                        )
+                    })}
+                </ul>
+                <MoreBtn />
+            </>
+        );
 
         const loader = <div>Загрузка</div>;
 

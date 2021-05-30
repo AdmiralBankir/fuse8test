@@ -1,0 +1,24 @@
+/* Filter */
+.filter {
+    margin-bottom: 45px;
+    display: flex;
+    align-items: center;
+    column-gap: 20px;
+}
+
+.filter__label {
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: -0.3px;
+    color: #363636;
+}
+
+.filter__input {
+    width: 418px;
+    height: 50px;
+    border: 1px solid #d8d8d8;
+    box-sizing: border-box;
+    border-radius: 25px;
+    padding: 5px 15px;
+}
