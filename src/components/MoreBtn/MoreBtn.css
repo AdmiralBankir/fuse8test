@@ -16,4 +16,9 @@
     align-items: center;
     column-gap: 10px;
     cursor: pointer;
+    transition: opacity 0.3s linear;
+}
+
+.more-btn:hover {
+    opacity: 0.4;
 }

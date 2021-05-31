@@ -64,6 +64,11 @@
     display: block;
     text-decoration: none;
     padding-bottom: 17px;
+    transition: opacity 0.3s linear;
+}
+
+.apart-list__link:hover {
+    opacity: 0.4;
 }
 
 /* Description */
