@@ -2,6 +2,7 @@ import React from 'react';
 import './ApartmentsList.css'
 import Filter from '../Filter/Filter';
 import MoreBtn from '../MoreBtn/MoreBtn';
+import Loader from '../Loader/Loader';
 import axios from 'axios';
 
 const URL_FETCH = 'https://603e38c548171b0017b2ecf7.mockapi.io/homes';
@@ -106,7 +107,7 @@ class ApartmentsList extends React.Component {
             </>
         );
 
-        const loader = <div>Загрузка</div>;
+        const loader = <Loader />;
 
         const rendered = this.state.loaded ? apartList : loader;
 
