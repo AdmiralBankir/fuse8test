@@ -29,7 +29,7 @@ function getApartItem(item) {
             href={`/details/${item.id}`}>
             <figure className="apart-list__media">
                 <picture>
-                    <source type="image/webp" src={getImage('webp', 377, 227, item.title)} srcSet={getImage('webp', 377 * 2, 227 * 2, item.title) + ' 2x'} />
+                    <source type="image/webp" srcSet={getImage('webp', 377, 227, item.title) + ', ' + getImage('webp', 377 * 2, 227 * 2, item.title) + ' 2x'} />
                     <img width="377" height="227" src={getImage('jpeg', 377, 227, item.title)} srcSet={getImage('jpeg', 377 * 2, 227 * 2, item.title) + ' 2x'} alt="Apart view" />
                 </picture>
                 <figcaption className="apart-list__media-caption">
