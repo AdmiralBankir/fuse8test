@@ -3,6 +3,8 @@
   margin-top: 36px;
   margin-bottom: 77px;
   width: calc(100vw - 2 * 50px);
+  max-width: 1200px;
+  min-width: 290px;
 }
 
 .App h1 {
@@ -13,4 +15,10 @@
   line-height: 49px;
   text-align: center;
   color: #45852d;
+}
+
+@media(max-width: 767px) {
+  .App {
+    width: calc(100vw - 2 * 15px);
+  }
 }
